@@ -8,6 +8,9 @@ runtime! ftplugin/xml.vim
 runtime! syntax/xml.vim
 call RagtagInit()
 
+" Omnicompletion {{{1
+XMLns pml
+
 " PML specific folding {{{1
 function! PmlFolds()
   if match(getline(v:lnum), "<sect1") >= 0
@@ -58,11 +61,6 @@ endfunction
 setlocal foldmethod=expr
 setlocal foldexpr=PmlFolds()
 setlocal foldtext=PmlFoldText()
-
-" Omnicompletion {{{1
-" read up on :help ft-xml-omni
-"        and :help compl-omni-filetypes
-XMLns pml
 
 " Outro {{{1
 unlet! b:did_ftplugin
