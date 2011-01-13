@@ -57,7 +57,7 @@ setlocal foldexpr=PmlFolds()
 setlocal foldtext=PmlFoldText()
 
 if has("autocmd") && exists("+omnifunc") && &omnifunc == ""
-    setlocal omnifunc=syntaxcomplete#Complete
+  setlocal omnifunc=syntaxcomplete#Complete
 endif
 
 XMLns pml
