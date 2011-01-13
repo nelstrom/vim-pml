@@ -1,11 +1,14 @@
+" Intro {{{1
 if exists("b:did_ftplugin")
   finish
 endif
 
+" XML functionality {{{1
 runtime! ftplugin/xml.vim
 runtime! syntax/xml.vim
 call RagtagInit()
 
+" PML specific folding {{{1
 function! PmlFolds()
   if match(getline(v:lnum), "<sect1") >= 0
     return ">1"
@@ -56,11 +59,13 @@ setlocal foldmethod=expr
 setlocal foldexpr=PmlFolds()
 setlocal foldtext=PmlFoldText()
 
+" Omnicompletion {{{1
 if has("autocmd") && exists("+omnifunc")
   setlocal omnifunc=syntaxcomplete#Complete
 endif
 
 XMLns pml
 
+" Outro {{{1
 unlet! b:did_ftplugin
-
+" vim: foldmethod=marker
