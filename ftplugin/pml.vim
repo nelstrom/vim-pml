@@ -60,10 +60,8 @@ setlocal foldexpr=PmlFolds()
 setlocal foldtext=PmlFoldText()
 
 " Omnicompletion {{{1
-if has("autocmd") && exists("+omnifunc")
-  setlocal omnifunc=syntaxcomplete#Complete
-endif
-
+" read up on :help ft-xml-omni
+"        and :help compl-omni-filetypes
 XMLns pml
 
 " Outro {{{1
