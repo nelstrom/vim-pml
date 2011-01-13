@@ -1,0 +1,4 @@
+Tweak the foldtext method for better Vim compatability.
+Add snipmate snippets (from mailing list)
+Add taglist customizations
+Add ctags file, with instructions to append contents to ~/.ctags
