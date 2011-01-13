@@ -56,5 +56,11 @@ setlocal foldmethod=expr
 setlocal foldexpr=PmlFolds()
 setlocal foldtext=PmlFoldText()
 
+if has("autocmd") && exists("+omnifunc") && &omnifunc == ""
+    setlocal omnifunc=syntaxcomplete#Complete
+endif
+
+XMLns pml
+
 unlet! b:did_ftplugin
 
