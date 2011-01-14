@@ -3,14 +3,13 @@ snippet chapter
 	<!DOCTYPE chapter SYSTEM "local/xml/markup.dtd">
 	<chapter id="chp.${1:`substitute(Filename('', 'ChapterId'), '^.', '\u&', '')`}">
 		<title>${2}</title>
-	
+
 		<p>
-	
-		 ${3} 
-	
+
+		 ${3}
+
 		</p>
-	
-		
+
 	</chapter>
 snippet pref
 	<pref linkend="${1}"/>
@@ -18,25 +17,25 @@ snippet sec
 	<sect${1:1}>
 		<title>${2}</title>
 		<p>
-			
+
 			${3}
-		
+
 		</p>
 	</sect$1>
 snippet seci
 	<sect${1:1} id="${2}">
 		<title>${3}</title>
 		<p>
-			
+
 			${4}
-		
+
 		</p>
 	</sect$1>
 snippet p
 	<p>
-		
+
 		${1}
-	
+
 	</p>
 snippet footnote
 	<footnote>
@@ -55,7 +54,7 @@ snippet epigraph
 	</epigraph>
 snippet bq
 	<blockquote>
-		<p>	
+		<p>
 
 			${1}
 
@@ -73,7 +72,7 @@ snippet sb
 snippet hl
 	<highlight>
 		<p>
-			
+
 			${1}
 
 		</p>
