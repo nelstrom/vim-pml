@@ -50,8 +50,15 @@ You could now toggle the taglist by pressing `,/` (comma forward-slash).
 Fold by section
 ---------------
 
+The pml.vim plugin includes a custom folding expression, which allows you to fold sections of your PML document. This screenshot shows how a document looks when opened, with all `<sect1>` tags folded. Note that the fold indicates how many lines have been hidden, and shows the title of the folded section.
+
 ![All sect1 sections folded](https://github.com/nelstrom/vim-pml/raw/master/screenshots/folding-1.png)
+
+The next screenshot demonstrates how the document looks after opening the first `<sect1>` tag. Note that the `<sect2>` blocks are indented more than the `<sect1>` blocks. Also, note that the section level is indicated in brackets:
+
 ![One sect1 opened](https://github.com/nelstrom/vim-pml/raw/master/screenshots/folding-2.png)
+
+If you just learn one folding command, make it this one: `zi`. This toggles folding behaviour on and off. You'll want folding disabled until you learn some of the finer grained folding commands. 
 
 Credits
 -------
