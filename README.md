@@ -24,7 +24,7 @@ Follow the installation instructions on the [SnipMate project page][s], or use t
 Generate a table of contents per chapter
 ----------------------------------------
 
-![Table of contents](https://github.com/nelstrom/vim-pml/raw/master/table-of-contents.png)
+![Table of contents](https://github.com/nelstrom/vim-pml/raw/master/screenshots/table-of-contents.png)
 
 To add this functionality, you will have to install exuberant tags on your system, as well as adding the taglist.vim plugin to Vim.
 
@@ -46,6 +46,12 @@ You might also want to create mapping so that you can quickly toggle the taglist
     nmap <Leader>/ :TlistToggle<CR>
 
 You could now toggle the taglist by pressing `,/` (comma forward-slash).
+
+Fold by section
+---------------
+
+![All sect1 sections folded](https://github.com/nelstrom/vim-pml/raw/master/screenshots/folding-1.png)
+![One sect1 opened](https://github.com/nelstrom/vim-pml/raw/master/screenshots/folding-2.png)
 
 Credits
 -------
