@@ -7,6 +7,8 @@ This plugin adds the following functionality:
 * generate a clickable table of contents for `<title>`s in a chapter
 * custom folding
 
+This README file is primarily concerned with how to install the plugin and its dependencies. For a guide on how to use it, check the [Authors wiki][wiki].
+
 Installation
 ============
 
@@ -77,3 +79,4 @@ Written by Drew Neil, with contributions from Brendan McAdams, who created the o
 [ctext]: http://ctags.sourceforge.net/EXTENDING.html
 [snips]: https://github.com/nelstrom/vim-pml/blob/master/snippets/pml.snippets
 [ctagrules]: https://github.com/nelstrom/vim-pml/blob/master/ctags
+[wiki]: http://www.pragprog.com/wikis/authors/VimTools
