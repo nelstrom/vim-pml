@@ -1,3 +1,1 @@
 Tweak the foldtext method for better Vim compatability.
-Add taglist customizations
-Add ctags file, with instructions to append contents to ~/.ctags
