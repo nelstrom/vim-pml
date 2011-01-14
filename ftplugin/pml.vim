@@ -6,12 +6,17 @@ endif
 " XML functionality {{{1
 runtime! ftplugin/xml.vim
 runtime! syntax/xml.vim
+XMLns pml
+
+" Initialize other plugins {{{1
+" Enable Ragtag.vim {{{2
 if exists('*RagtagInit')
   call RagtagInit()
 endif
-
-" Omnicompletion {{{1
-XMLns pml
+" Setup taglist {{{2
+if exists('loaded_taglist') && loaded_taglist != 'no'
+  let tlist_pml_settings='pml;t:Titles;a:Anchors'
+endif
 
 " PML specific folding {{{1
 function! PmlFolds()
