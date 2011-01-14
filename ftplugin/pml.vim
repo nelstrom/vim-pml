@@ -6,7 +6,9 @@ endif
 " XML functionality {{{1
 runtime! ftplugin/xml.vim
 runtime! syntax/xml.vim
-call RagtagInit()
+if exists('*RagtagInit')
+  call RagtagInit()
+endif
 
 " Omnicompletion {{{1
 XMLns pml
