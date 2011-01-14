@@ -34,13 +34,13 @@ You can install the taglist.vim plugin the traditional way, by [following the in
 
 ### Customizations ###
 
-The exuberant tags program supports over [40 programming languages][ctl], but it doesn’t know anything about PML. Luckily it’s quite easy to extend exuberant tags to support other languages, by adding rules to a `~/.ctags` file. In the repository for this plugin, you'll find a file called `ctags`. Append the contents of this file to your `~/.ctags` file. The exuberant tags site has more information on [extending ctags to support other languages][ctext].
+The exuberant tags program supports over [40 programming languages][ctl], but it doesn’t know anything about PML. Luckily it’s quite easy to extend exuberant tags to support other languages, by adding rules to a `~/.ctags` file. In the repository for this plugin, you'll find a file called [`ctags`][ctagrules]. Append the contents of this file to your `~/.ctags` file. The exuberant tags site has more information on [extending ctags to support other languages][ctext].
 
 The taglist plugin needs to know where you have installed exuberant tags. You can find out by running `which ctags`. On my system, this returns "/usr/local/bin/ctags". Put this line in your vimrc file:
 
     let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
-You might also want to create mapping so that you can quickly toggle the taglist table of contents. For example, if you put these lines in your vimrc:
+You might also want to create a mapping so that you can quickly toggle the taglist table of contents. For example, if you put these lines in your vimrc:
 
     let mapleader = ","
     nmap <Leader>/ :TlistToggle<CR>
@@ -69,3 +69,4 @@ Written by Drew Neil, with contributions from Brendan McAdams, who created the o
 [ctl]: http://ctags.sourceforge.net/languages.html
 [ctext]: http://ctags.sourceforge.net/EXTENDING.html
 [snips]: https://github.com/nelstrom/vim-pml/blob/master/snippets/pml.snippets
+[ctagrules]: https://github.com/nelstrom/vim-pml/blob/master/ctags
