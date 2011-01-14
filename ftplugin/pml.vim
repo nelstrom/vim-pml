@@ -52,17 +52,8 @@ function! PmlFoldText()
     let counter = counter + 1
     let linenum = linenum + 1
   endwhile
-  let leader = printf("%-10s", v:foldlevel)
-  if v:foldlevel == 1
-    let leader = printf("%-2s%-48s", v:foldlevel, title)
-  elseif v:foldlevel == 2
-    let leader = printf("%-4s%-46s", v:foldlevel, title)
-  elseif v:foldlevel == 3
-    let leader = printf("%-6s%-44s", v:foldlevel, title)
-  end
-  " TODO: figure out why example (:h fold-foldtext) uses v:folddashes:
-  "   return v:folddashes . sub
-  return printf("%s %6s lines", leader, foldedlinecount)
+  let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
+  return "+" . v:folddashes . v:folddashes . metadata . title
 endfunction
 
 setlocal foldmethod=expr
