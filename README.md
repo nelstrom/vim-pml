@@ -24,6 +24,8 @@ Follow the installation instructions on the [SnipMate project page][s], or use t
 Generate a table of contents per chapter
 ----------------------------------------
 
+![Table of contents](https://github.com/nelstrom/vim-pml/raw/master/table-of-contents.png)
+
 To add this functionality, you will have to install exuberant tags on your system, as well as adding the taglist.vim plugin to Vim.
 
 On OS X, you can get exuberant tags by running: `brew install ctags`. On linux, you can install it by running: `sudo apt-get install exuberant-ctags`.
