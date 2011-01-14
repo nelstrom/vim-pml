@@ -17,7 +17,7 @@ Some of the functionality depends on other Vim plugins. Brief installation notes
 TextMate style snippets for PML
 -------------------------------
 
-Installing [SnipMate][s] will enable you to use TextMate-style snippets. This pml.vim bundle includes snippets which you will find useful when working with PML files.
+Installing [SnipMate][s] will enable you to use TextMate-style snippets. This pml.vim bundle includes [useful snippets for working with PML files][snips].
 
 Follow the installation instructions on the [SnipMate project page][s], or use the [github mirror of SnipMate][sg] to install with Pathogen.
 
@@ -68,3 +68,4 @@ Written by Drew Neil, with contributions from Brendan McAdams, who created the o
 [27]: http://vimcasts.org/e/27
 [ctl]: http://ctags.sourceforge.net/languages.html
 [ctext]: http://ctags.sourceforge.net/EXTENDING.html
+[snips]: https://github.com/nelstrom/vim-pml/blob/master/snippets/pml.snippets
