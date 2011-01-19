@@ -8,6 +8,9 @@ runtime! ftplugin/xml.vim
 runtime! syntax/xml.vim
 XMLns pml
 
+" Sensible settings {{{1
+set linebreak
+
 " Initialize other plugins {{{1
 " Enable Ragtag.vim {{{2
 if exists('*RagtagInit')
