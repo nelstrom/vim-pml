@@ -789,19 +789,19 @@ endfunction
 
 function! PmlFoldText()
   let foldedlinecount = v:foldend - v:foldstart
-  let line = getline(v:foldstart)
-  let title = "<Untitled>"
+  let line = ""
   let counter = 0
   let linenum = v:foldstart
-  while title == "<Untitled>" && counter < 10
-    let line = getline( linenum )
-    let sectTitle = matchstr(line, "<title>\\zs.\\+\\ze</title>")
-    if sectTitle != ""
-      let title = sectTitle
-    endif
+  while counter < 10
+    let line = line . getline( linenum )
     let counter = counter + 1
     let linenum = linenum + 1
   endwhile
+  let sectTitle = matchstr(line, "<title>\\s*\\zs.\\+\\ze\\s*</title>")
+  let title = "<Untitled>"
+  if sectTitle != ""
+    let title = sectTitle
+  endif
   let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
   return "+" . v:folddashes . v:folddashes . metadata . title
 endfunction
@@ -814,7 +814,7 @@ setlocal foldtext=PmlFoldText()
 unlet! b:did_ftplugin
 " vim: foldmethod=marker
 snippets/pml.snippets	[[[1
-134
+145
 snippet chapter
 	<?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE chapter SYSTEM "local/xml/markup.dtd">
@@ -886,6 +886,15 @@ snippet sb
 
 		</p>
 	</sidebar>
+snippet joe
+	<joeasks>
+		<title>${1}</title>
+		<p>
+
+			${2}
+
+		</p>
+	</joeasks>
 snippet hl
 	<highlight>
 		<p>
@@ -915,6 +924,8 @@ snippet em
 	<emph>${1}</emph>${2}
 snippet const
 	<constant>${1:constant}</constant>${2}
+snippet acro
+	<acronym>${1}</acronym>${2}
 snippet kw
 	<keyword>${1}</keyword>${2}
 snippet elide
