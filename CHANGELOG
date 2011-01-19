@@ -1,0 +1,9 @@
+0.0.2 - Minor tweaks:
+		* add snippets for <joeasks> and <acronym> (Nathan Eror)
+		* make PmlFoldText() tolerant of <title> split across multiple lines (Dion Nicolaas)
+0.0.1 - Initial release: 
+		* PML filetype
+		* a custom folding expression for PML
+		* omni-complete function (Brendan McAdams)
+		* snipmate snippets (Nathan Eror)
+		* Taglist/ctags support for generating a table of contents
