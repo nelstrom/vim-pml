@@ -76,7 +76,11 @@ Ideally, I would prefer if the all figures were collected in a separate list. Al
 Credits
 -------
 
-Written by Drew Neil, with contributions from Brendan McAdams, who created the omni-completion, and Nathan Eror, who created the snipMate snippets.
+Written and maintained by Drew Neil, with contributions from:
+
+* Brendan McAdams (created the omni-completion) 
+* Nathan Eror (created the snipMate snippets)
+* Dion Nicolaas
 
 [Pathogen]: http://www.vim.org/scripts/script.php?script_id=2332
 [pg]: http://github.com/tpope/vim-pathogen
