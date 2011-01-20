@@ -42,19 +42,26 @@ endfunction
 
 function! PmlFoldText()
   let foldedlinecount = v:foldend - v:foldstart
-  let line = ""
-  let counter = 0
   let linenum = v:foldstart
-  while counter < 10
-    let line = line . getline( linenum )
+
+  " Scan 5 lines from fold start for <title></title> tags
+  let scantext = ""
+  let scanrange = 5
+  let counter = 0
+  while counter < scanrange
+    let scantext = scantext . getline( linenum )
     let counter = counter + 1
     let linenum = linenum + 1
   endwhile
-  let sectTitle = matchstr(line, "<title>\\s*\\zs.\\+\\ze\\s*</title>")
+  let sectTitle = matchstr(scantext, "<title>\\s*\\zs.\\+\\ze\\s*</title>")
+
+  " Set title from contents of <title></title>
   let title = "<Untitled>"
   if sectTitle != ""
     let title = sectTitle
   endif
+
+  " Build the string that will be displayed as foldtext
   let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
   return "+" . v:folddashes . v:folddashes . metadata . title
 endfunction
