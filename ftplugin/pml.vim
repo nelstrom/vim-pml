@@ -10,11 +10,6 @@ XMLns pml
 " Sensible settings {{{1
 " Soft wrap, without breaking in the middle of a word
 set linebreak
-" Wrapped lines begin after 4 columns
-let &showbreak = '... '
-" Do not show linenumbers
-set nonumber
-
 
 " Initialize other plugins {{{1
 " Enable Ragtag.vim {{{2
