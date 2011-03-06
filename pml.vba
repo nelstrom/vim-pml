@@ -747,7 +747,7 @@ autocmd BufNewFile,BufRead *.pml
       \   setf pml |
       \ endif
 ftplugin/pml.vim	[[[1
-65
+75
 " Intro {{{1
 if exists("b:did_ftplugin")
   finish
@@ -755,8 +755,11 @@ endif
 
 " XML functionality {{{1
 runtime! ftplugin/xml.vim
-runtime! syntax/xml.vim
 XMLns pml
+
+" Sensible settings {{{1
+" Soft wrap, without breaking in the middle of a word
+set linebreak
 
 " Initialize other plugins {{{1
 " Enable Ragtag.vim {{{2
@@ -789,19 +792,26 @@ endfunction
 
 function! PmlFoldText()
   let foldedlinecount = v:foldend - v:foldstart
-  let line = ""
-  let counter = 0
   let linenum = v:foldstart
-  while counter < 10
-    let line = line . getline( linenum )
+
+  " Scan 5 lines from fold start for <title></title> tags
+  let scantext = ""
+  let scanrange = 5
+  let counter = 0
+  while counter < scanrange
+    let scantext = scantext . getline( linenum )
     let counter = counter + 1
     let linenum = linenum + 1
   endwhile
-  let sectTitle = matchstr(line, "<title>\\s*\\zs.\\+\\ze\\s*</title>")
+  let sectTitle = matchstr(scantext, "<title>\\s*\\zs.\\+\\ze\\s*</title>")
+
+  " Set title from contents of <title></title>
   let title = "<Untitled>"
   if sectTitle != ""
     let title = sectTitle
   endif
+
+  " Build the string that will be displayed as foldtext
   let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
   return "+" . v:folddashes . v:folddashes . metadata . title
 endfunction
@@ -960,3 +970,8 @@ snippet ic
 	<inlinecode>${1:code}</inlinecode>${2}
 snippet cref
 	<cref linkend="${1}"/>${2}
+syntax/pml.vim	[[[1
+3
+runtime! syntax/xml.vim
+
+syntax spell toplevel
