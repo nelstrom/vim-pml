@@ -5,7 +5,6 @@ endif
 
 " XML functionality {{{1
 runtime! ftplugin/xml.vim
-runtime! syntax/xml.vim
 XMLns pml
 
 " Sensible settings {{{1
