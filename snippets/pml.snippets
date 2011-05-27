@@ -11,8 +11,8 @@ snippet chapter
 		</p>
 
 	</chapter>
-snippet pref
-	<pref linkend="${1}"/>
+snippet ref
+	<ref linkend="${1}"/>
 snippet sec
 	<sect${1:1}>
 		<title>${2}</title>
@@ -89,12 +89,12 @@ snippet hl
 snippet img
 	<figure id="fig.${1}">
 		<title>${2}</title>
-		<imagedata fileref="${3:imagePath}" width="${4:natural}" scale="${5:1.0}" center="${6:yes}"/>
+		<imagedata fileref="${3:imagePath}" align="${6:center}"/>
 	</figure>
 snippet var
-	<variablename>${1:variableName}</variablename>${2}
+	<variable>${1:variableName}</variable>${2}
 snippet class
-	<classname>${1:className}</classname>${2}
+	<class>${1:className}</class>${2}
 snippet m
 	<methodname>${1:methodName}</methodname>${2}
 snippet ma
