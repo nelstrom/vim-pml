@@ -78,6 +78,7 @@ Generating a vimball
 
 To distribute the script on [vim.org][s] wrap it up as a vimball by following these steps:
 
+* first, ensure that the file `pml.vba` is not loaded in a Vim buffer
 * open the file `vimballer` in Vim
 * set the variable `g:vimball_home` to the development directory of this plugin (e.g. run: `:let g:vimball_home='~/dotfiles/vim/bundle/pml'`)
 * visually select all lines in `vimballer` file
