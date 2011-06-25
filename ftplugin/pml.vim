@@ -69,12 +69,11 @@ function! PmlFoldText()
     let title = sectTitle
   endif
 
-  if match(getline(v:foldstart), "<sidebar") >= 0
-    let entity = 'sidebar'
-  elseif match(getline(v:foldstart), "<figure") >= 0
-    let entity = 'figure'
-  else
-    let entity = v:foldlevel
+  " Use foldlevel as entity text for sections, or element name otherwise
+  let entity = v:foldlevel
+  let pattern = '<\zs\(sidebar\|figure\)\>'
+  if match(getline(v:foldstart), pattern) >= 0
+    let entity = matchstr(getline(v:foldstart), pattern)
   endif
 
   " Build the string that will be displayed as foldtext
