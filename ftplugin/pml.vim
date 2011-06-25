@@ -22,6 +22,7 @@ if exists('loaded_taglist') && loaded_taglist != 'no'
 endif
 
 " PML specific folding {{{1
+let s:elements = ['sidebar', 'figure']
 function! PmlFolds()
   if match(getline(v:lnum), "<sect1") >= 0
     return ">1"
@@ -71,7 +72,7 @@ function! PmlFoldText()
 
   " Use foldlevel as entity text for sections, or element name otherwise
   let entity = v:foldlevel
-  let pattern = '<\zs\(sidebar\|figure\)\>'
+  let pattern = '<\zs\(' . join(s:elements, '\|') . '\)\>'
   if match(getline(v:foldstart), pattern) >= 0
     let entity = matchstr(getline(v:foldstart), pattern)
   endif
