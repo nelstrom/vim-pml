@@ -22,7 +22,13 @@ if exists('loaded_taglist') && loaded_taglist != 'no'
 endif
 
 " PML specific folding {{{1
-let s:elements = ['sidebar', 'figure']
+if exists("g:pml_foldable_elements")
+  let s:elements = g:pml_foldable_elements
+else
+  " Sidebar and figure elements are foldable by default
+  let s:elements = ['sidebar', 'figure']
+endif
+
 function! PmlFolds()
   let currentline = getline(v:lnum)
   let openSection = '<sect\zs\d\>'
