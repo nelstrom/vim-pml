@@ -901,7 +901,7 @@ autocmd BufNewFile,BufRead *.pml
       \   setf pml |
       \ endif
 ftplugin/pml.vim	[[[1
-75
+91
 " Intro {{{1
 if exists("b:did_ftplugin")
   finish
@@ -926,19 +926,28 @@ if exists('loaded_taglist') && loaded_taglist != 'no'
 endif
 
 " PML specific folding {{{1
+if exists("g:pml_foldable_elements")
+  let s:elements = g:pml_foldable_elements
+else
+  " Sidebar and figure elements are foldable by default
+  let s:elements = ['sidebar', 'figure']
+endif
+
 function! PmlFolds()
-  if match(getline(v:lnum), "<sect1") >= 0
-    return ">1"
-  elseif match(getline(v:lnum), "</sect1") >= 0
-    return "<1"
-  elseif match(getline(v:lnum), "<sect2") >= 0
-    return ">2"
-  elseif match(getline(v:lnum), "</sect2") >= 0
-    return "<2"
-  elseif match(getline(v:lnum), "<sect3") >= 0
-    return ">3"
-  elseif match(getline(v:lnum), "</sect3") >= 0
-    return "<3"
+  let currentline = getline(v:lnum)
+  let openSection = '<sect\zs\d\>'
+  let closeSection = '<\/sect\zs\d\>'
+  let openElement = '<\zs\(' . join(s:elements, '\|') . '\)\>'
+  let closeElement = '<\/\zs\(' . join(s:elements, '\|') . '\)\>'
+
+  if match(currentline, openSection) >=0
+    return ">" . matchstr(currentline, openSection)
+  elseif match(currentline, closeSection) >=0
+    return "<" . matchstr(currentline, closeSection)
+  elseif match(currentline, openElement) >=0
+    return "a1"
+  elseif match(currentline, closeElement) >=0
+    return "s1"
   else
     return "="
   endif
@@ -965,8 +974,15 @@ function! PmlFoldText()
     let title = sectTitle
   endif
 
+  " Use foldlevel as entity text for sections, or element name otherwise
+  let entity = v:foldlevel
+  let pattern = '<\zs\(' . join(s:elements, '\|') . '\)\>'
+  if match(getline(v:foldstart), pattern) >= 0
+    let entity = matchstr(getline(v:foldstart), pattern)
+  endif
+
   " Build the string that will be displayed as foldtext
-  let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
+  let metadata = printf("%4s lines (%s) ", foldedlinecount, entity)
   return "+" . v:folddashes . v:folddashes . metadata . title
 endfunction
 
@@ -978,7 +994,7 @@ setlocal foldtext=PmlFoldText()
 unlet! b:did_ftplugin
 " vim: foldmethod=marker
 snippets/pml.snippets	[[[1
-145
+151
 snippet chapter
 	<?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE chapter SYSTEM "local/xml/markup.dtd">
@@ -987,13 +1003,13 @@ snippet chapter
 
 		<p>
 
-		 ${3}
+			${3}
 
 		</p>
 
 	</chapter>
-snippet pref
-	<pref linkend="${1}"/>
+snippet ref
+	<ref linkend="${1}"/>
 snippet sec
 	<sect${1:1}>
 		<title>${2}</title>
@@ -1070,18 +1086,18 @@ snippet hl
 snippet img
 	<figure id="fig.${1}">
 		<title>${2}</title>
-		<imagedata fileref="${3:imagePath}" width="${4:natural}" scale="${5:1.0}" center="${6:yes}"/>
+		<imagedata fileref="${3:imagePath}" align="${6:center}"/>
 	</figure>
 snippet var
-	<variablename>${1:variableName}</variablename>${2}
+	<variable>${1:variableName}</variable>${2}
 snippet class
-	<classname>${1:className}</classname>${2}
+	<class>${1:className}</class>${2}
 snippet m
 	<methodname>${1:methodName}</methodname>${2}
 snippet ma
 	<methodname args="${2:}">${1:methodName}</methodname>${3}
 snippet om
-	<objcmethodname>${1:methodName}</objcmethodname>${2}
+	<objcmethod>${1:methodName}</objcmethod>${2}
 snippet oma
 	<objcmethodname args="${2:}">${1:methodName}</objcmethodname>${2}
 snippet em
@@ -1124,10 +1140,17 @@ snippet ic
 	<inlinecode>${1:code}</inlinecode>${2}
 snippet cref
 	<cref linkend="${1}"/>${2}
+snippet li
+	<li>
+		<p>
+			${1}
+		</p>
+	</li>
 syntax/pml.vim	[[[1
-7
+8
 runtime! syntax/xml.vim
 
+" :help spell-syntax
 syntax spell toplevel
 
 syntax match pmlLinkend @linkend=\('\zs[^']\+\ze'\|\"\zs[^"]\+\ze"\)@ contained
