@@ -24,25 +24,19 @@ endif
 " PML specific folding {{{1
 let s:elements = ['sidebar', 'figure']
 function! PmlFolds()
-  if match(getline(v:lnum), "<sect1") >= 0
-    return ">1"
-  elseif match(getline(v:lnum), "</sect1") >= 0
-    return "<1"
-  elseif match(getline(v:lnum), "<sect2") >= 0
-    return ">2"
-  elseif match(getline(v:lnum), "</sect2") >= 0
-    return "<2"
-  elseif match(getline(v:lnum), "<sect3") >= 0
-    return ">3"
-  elseif match(getline(v:lnum), "</sect3") >= 0
-    return "<3"
-  elseif match(getline(v:lnum), "<figure") >= 0
+  let currentline = getline(v:lnum)
+  let openSection = '<sect\zs\d\>'
+  let closeSection = '<\/sect\zs\d\>'
+  let openElement = '<\zs\(' . join(s:elements, '\|') . '\)\>'
+  let closeElement = '<\/\zs\(' . join(s:elements, '\|') . '\)\>'
+
+  if match(currentline, openSection) >=0
+    return ">" . matchstr(currentline, openSection)
+  elseif match(currentline, closeSection) >=0
+    return "<" . matchstr(currentline, closeSection)
+  elseif match(currentline, openElement) >=0
     return "a1"
-  elseif match(getline(v:lnum), "</figure") >= 0
-    return "s1"
-  elseif match(getline(v:lnum), "<sidebar") >= 0
-    return "a1"
-  elseif match(getline(v:lnum), "</sidebar") >= 0
+  elseif match(currentline, closeElement) >=0
     return "s1"
   else
     return "="
