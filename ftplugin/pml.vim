@@ -35,6 +35,14 @@ function! PmlFolds()
     return ">3"
   elseif match(getline(v:lnum), "</sect3") >= 0
     return "<3"
+  elseif match(getline(v:lnum), "<figure") >= 0
+    return "a1"
+  elseif match(getline(v:lnum), "</figure") >= 0
+    return "s1"
+  elseif match(getline(v:lnum), "<sidebar") >= 0
+    return "a1"
+  elseif match(getline(v:lnum), "</sidebar") >= 0
+    return "s1"
   else
     return "="
   endif
