@@ -70,7 +70,13 @@ function! PmlFoldText()
   endif
 
   " Build the string that will be displayed as foldtext
-  let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
+  if match(getline(v:foldstart), "<sidebar") >= 0
+    let metadata = printf("%4s lines (%s) ", foldedlinecount, 'sidebar')
+  elseif match(getline(v:foldstart), "<figure") >= 0
+    let metadata = printf("%4s lines (%s) ", foldedlinecount, 'figure')
+  else
+    let metadata = printf("%4s lines (%s) ", foldedlinecount, v:foldlevel)
+  endif
   return "+" . v:folddashes . v:folddashes . metadata . title
 endfunction
 
