@@ -1,4 +1,5 @@
-0.0.5 - Improve custom folding expression.
+0.0.6 - Enable XML indentation for PML files
+0.0.5 - Improve custom folding expression
 		* update snippets to XSL-FO tagset (Nathan Eror)
 0.0.4 - Update omni-completion to use XSL-FO tagset
 0.0.3 - Minor tweaks

@@ -901,7 +901,7 @@ autocmd BufNewFile,BufRead *.pml
       \   setf pml |
       \ endif
 ftplugin/pml.vim	[[[1
-91
+92
 " Intro {{{1
 if exists("b:did_ftplugin")
   finish
@@ -909,6 +909,7 @@ endif
 
 " XML functionality {{{1
 runtime! ftplugin/xml.vim
+runtime! indent/xml.vim
 XMLns pml
 
 " Sensible settings {{{1
