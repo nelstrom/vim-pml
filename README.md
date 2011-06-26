@@ -23,6 +23,15 @@ Installing [SnipMate][s] will enable you to use TextMate-style snippets. This pm
 
 Follow the installation instructions on the [SnipMate project page][s], or use the [github mirror of SnipMate][sg] to install with Pathogen.
 
+Auto-generate pairs of XML tags with [RagTag][]
+-----------------------------------------------
+
+Install the [RagTag][] plugin to get smart tag completion. These commands are particularly useful:
+
+    <C-X><Space>  create an inline tag from the word in front of the cursor
+    <C-X><CR>     create a block level tag from the word in front of the cursor
+    <C-X>/        insert the closing tag for the previous unpaired opening tag
+
 Generate a table of contents per chapter
 ----------------------------------------
 
@@ -117,3 +126,4 @@ Written and maintained by Drew Neil, with contributions from:
 [ctagrules]: https://github.com/nelstrom/vim-pml/blob/master/ctags
 [wiki]: http://www.pragprog.com/wikis/authors/VimTools
 [vim.org]: http://www.vim.org/scripts/index.php
+[RagTag]: https://github.com/tpope/vim-ragtag
