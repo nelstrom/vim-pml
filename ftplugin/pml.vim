@@ -5,6 +5,10 @@ endif
 
 " XML functionality {{{1
 runtime! ftplugin/xml.vim
+
+" Not sure why this doesn't get loaded automatically, but MacVim (7.3) doesn't
+" want to auto-indent without adding this explicitly.
+runtime! indent/xml.vim
 XMLns pml
 
 " Sensible settings {{{1
