@@ -26,8 +26,8 @@ endif
 if exists("g:pml_foldable_elements")
   let s:elements = g:pml_foldable_elements
 else
-  " Sidebar and figure elements are foldable by default
-  let s:elements = ['sidebar', 'figure']
+  " Sidebar, figure and recipe elements are foldable by default
+  let s:elements = ['sidebar', 'figure', 'recipe']
 endif
 
 function! PmlFolds()
