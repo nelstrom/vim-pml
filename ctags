@@ -2,5 +2,5 @@
 --langmap=pml:.pml
 --regex-pml=/<title>(.*)<\/title>/\1/t,title/
 --regex-pml=/id\="([a-z\.]+)"/\1/a,anchor/
---regex-pml=/#+([^ ]+$|[^{]*)/\1/t,title/
---regex-pml=/{#(.*)}/\1/a,anchor/
+--regex-pml=/^#+([^ ]+$|[^{]*)/\1/t,title/
+--regex-pml=/{#(.*)}\s*$/\1/a,anchor/
